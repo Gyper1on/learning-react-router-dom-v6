@@ -1,18 +1,14 @@
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import NavBar from "./components/navBar";
 import Dashboard from "./components/dashboard";
 import Login from "./components/login";
 import Home from "./components/home";
 import Stats from "./components/stats";
-import Post from "./components/Post";
-import PostList from "./components/postList";
+import Posts from "./components/posts";
+import NotFound from "./components/not-found";
 
 
-const posts = [
-    {id: 1, label: 'post 1'},
-    {id: 2, label: 'post 2'},
-    {id: 3, label: 'post 3'}
-]
+
 
 function App() {
 
@@ -23,16 +19,13 @@ function App() {
             <Routes>
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route
-                    path="/posts/:postId"
-                    element={<Post posts={posts}/>}/>
 
-                <Route
-                    path="/posts"
-                    element={<PostList posts={posts}/>}/>
+                <Route path="/posts/:postId?" element={<Posts/>}/>
 
                 <Route path="/" element={<Home/>}/>
                 <Route path="/dashboard/stats" element={<Stats/>}/>
+                <Route path="/404" element={<NotFound/>}/>
+                <Route path="*" element={<Navigate to= "/404"/> }/>
             </Routes>
         </div>
     );

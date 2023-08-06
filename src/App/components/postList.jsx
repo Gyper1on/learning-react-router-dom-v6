@@ -1,14 +1,14 @@
 import React from "react";
-import Login from "./login";
-import { useParams } from "react-router-dom";
+import {NavLink} from "react-router-dom";
+
+
 
 
 
 const PostsList = ({posts}) => {
-    const params = useParams();
-    console.log(JSON.stringify(params))
+
     return <>
-        {posts.map((post) => <h3 key={post.id} >{post.label}</h3> )}
+        {posts.map((post) => <NavLink to={`posts/${post.id}`} key={post.id}><h3>{post.label}</h3> </NavLink> )}
 
     </>
 }
